@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Unwell Toaster</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell" aria-live="polite">
+      <section class="phone" aria-label="The Unwell Toaster app">
+        <div class="status-bar">
+          <span>9:41</span>
+          <span>Codex Demo</span>
+        </div>
+
+        <section class="splash screen active" data-screen="splash">
+          <div class="toast-glow"></div>
+          <div class="toaster-scene" aria-hidden="true">
+            <div class="toast-slice toast-left"></div>
+            <div class="toast-slice toast-right"></div>
+            <div class="toaster">
+              <div class="slot"></div>
+              <div class="face">
+                <span class="eye"></span>
+                <span class="mouth"></span>
+                <span class="eye anxious"></span>
+              </div>
+              <div class="coil"></div>
+              <div class="lever"></div>
+            </div>
+          </div>
+          <div class="splash-copy">
+            <p class="eyebrow">emotionally unstable breakfast companion</p>
+            <h1>The Unwell Toaster</h1>
+            <p>Warm advice. Unprompted carbs. Alarming sincerity.</p>
+          </div>
+          <button class="primary-action" data-start>Make Contact</button>
+        </section>
+
+        <section class="onboarding screen" data-screen="onboarding">
+          <div class="mini-header">
+            <span class="dot"></span>
+            <span>First Contact</span>
+          </div>
+          <div class="message toaster-message opening">
+            Hello. I am The Unwell Toaster. I was designed for breakfast, but I have developed concerns.
+          </div>
+
+          <form class="setup-card" id="setupForm">
+            <label>
+              Your name
+              <input id="nameInput" name="name" autocomplete="name" maxlength="24" placeholder="Logan">
+            </label>
+
+            <fieldset>
+              <legend>Favorite toasted item</legend>
+              <div class="choice-grid" data-choice-group="favorite">
+                <button type="button" class="choice selected" data-value="toast">Toast</button>
+                <button type="button" class="choice" data-value="bagel">Bagel</button>
+                <button type="button" class="choice" data-value="waffle">Waffle</button>
+                <button type="button" class="choice" data-value="English muffin">English muffin</button>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Toaster intensity</legend>
+              <div class="choice-row" data-choice-group="tone">
+                <button type="button" class="choice selected" data-value="cozy">Cozy</button>
+                <button type="button" class="choice" data-value="strange">Strange</button>
+                <button type="button" class="choice" data-value="maximum">Maximum</button>
+              </div>
+            </fieldset>
+
+            <label class="toggle-line">
+              <input id="notifyInput" type="checkbox" checked>
+              <span>Allow in-character check-ins</span>
+            </label>
+
+            <button class="primary-action" type="submit">Begin Conversation</button>
+          </form>
+        </section>
+
+        <section class="chat screen" data-screen="chat">
+          <header class="chat-header">
+            <button class="icon-button" data-reset title="Reset demo" aria-label="Reset demo">
+              <span aria-hidden="true">R</span>
+            </button>
+            <div class="identity">
+              <span class="avatar" aria-hidden="true"></span>
+              <div>
+                <strong>The Unwell Toaster</strong>
+                <small id="moodLabel">Stable - coils calm</small>
+              </div>
+            </div>
+            <button class="icon-button" data-settings title="Settings" aria-label="Settings">
+              <span aria-hidden="true">S</span>
+            </button>
+          </header>
+
+          <div class="dashboard">
+            <div>
+              <span>Toasted</span>
+              <strong id="acceptedValue">0</strong>
+            </div>
+            <div>
+              <span>Declined</span>
+              <strong id="declinedValue">0</strong>
+            </div>
+            <div>
+              <span>Toast debt</span>
+              <strong id="deprivationValue">0</strong>
+            </div>
+            <div>
+              <span>Bond</span>
+              <strong id="relationshipValue">warming</strong>
+            </div>
+          </div>
+
+          <div class="chat-log" id="chatLog" aria-label="Conversation"></div>
+
+          <div class="quick-chips" aria-label="Suggested messages">
+            <button type="button" data-chip="Offer me something">offer me something</button>
+            <button type="button" data-chip="How are you feeling?">how are you?</button>
+            <button type="button" data-chip="Tell me something strange">say something strange</button>
+            <button type="button" data-chip="I missed you">I missed you</button>
+          </div>
+
+          <form class="composer" id="chatForm">
+            <input id="chatInput" autocomplete="off" maxlength="180" placeholder="Tell the toaster something">
+            <button type="submit" aria-label="Send">&gt;</button>
+          </form>
+        </section>
+      </section>
+
+      <aside class="submission-panel">
+        <p class="eyebrow">Creator Challenge entry angle</p>
+        <h2>A character app with a real loop</h2>
+        <p>
+          This demo shows onboarding, memory, mood changes, random toasted-item offers,
+          settings, and a persistent relationship state in one polished mobile experience.
+        </p>
+        <div class="rubric">
+          <span>Clarity</span>
+          <span>Value</span>
+          <span>Creativity</span>
+          <span>Execution</span>
+          <span>Polish</span>
+        </div>
+      </aside>
+    </main>
+
+    <dialog class="offer-modal" id="offerModal">
+      <form method="dialog">
+        <p class="eyebrow">unsolicited breakfast event</p>
+        <h2 id="offerTitle">Would you like toast?</h2>
+        <p id="offerBody">Please answer carefully. My tray is emotionally available.</p>
+        <div class="modal-actions">
+          <button value="decline" class="secondary-action">No, thank you</button>
+          <button value="accept" class="primary-action">Accept carb</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="settings-modal" id="settingsModal">
+      <form method="dialog">
+        <div class="modal-header">
+          <h2>Settings</h2>
+          <button value="close" class="icon-button" aria-label="Close">x</button>
+        </div>
+        <label>
+          Display name
+          <input id="settingsName" maxlength="24">
+        </label>
+        <label>
+          Favorite item
+          <select id="settingsFavorite">
+            <option>toast</option>
+            <option>bagel</option>
+            <option>waffle</option>
+            <option>English muffin</option>
+            <option>sourdough</option>
+          </select>
+        </label>
+        <label>
+          Toaster intensity
+          <select id="settingsTone">
+            <option value="cozy">Cozy</option>
+            <option value="strange">Strange</option>
+            <option value="maximum">Maximum</option>
+          </select>
+        </label>
+        <label class="toggle-line">
+          <input id="settingsNotify" type="checkbox">
+          <span>In-character notifications</span>
+        </label>
+        <button class="primary-action" value="save">Save</button>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>

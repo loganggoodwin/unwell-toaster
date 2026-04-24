@@ -1,0 +1,22 @@
+{
+  "name": "unwell-toaster-cli",
+  "version": "1.0.0",
+  "description": "A funny command-line companion app where you chat with an emotionally unstable toaster.",
+  "main": "cli.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node cli.js"
+  },
+  "keywords": [
+    "cli",
+    "toaster",
+    "chatbot",
+    "funny",
+    "github"
+  ],
+  "author": "Logan Garth Goodwin",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
